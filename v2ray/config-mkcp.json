@@ -1,0 +1,101 @@
+{
+    "inbounds": [
+        {
+            "port": 10086,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "7424d2c9-6b6f-41dc-bb54-b0db32f1b1a2",
+                        "alterId": 0
+                    }
+                ]
+            },
+	    "streamSettings": {
+		"network": "mkcp",
+		"kcpSettings": {
+		  "uplinkCapacity": 5,
+		  "downlinkCapacity": 100,
+		  "congestion": true,
+		  "header": {
+		    "type": "none"
+		  }
+		}
+	      }
+        },
+        {
+            "port": 12087,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    { 
+                        "id": "5f8be3e6-9ad9-a996-cac5-88c8fffea6db",
+                        "alterId": 0
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "mkcp",
+                "kcpSettings": {
+                  "uplinkCapacity": 5,
+                  "downlinkCapacity": 100,
+                  "congestion": true,
+                  "header": {
+                    "type": "none"
+                  }
+         	}
+	    }
+        },
+        {
+            "port": 12088,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    { 
+                        "id": "ae3fba3d-ecf9-4517-8b6e-a977aeeb26b3",
+                        "alterId": 0
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "mkcp",
+                "kcpSettings": {
+                  "uplinkCapacity": 5,
+                  "downlinkCapacity": 100,
+                  "congestion": true,
+                  "header": {
+                    "type": "none"
+                  }
+         	}
+	    }
+        },
+        {
+            "port": 12089,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {  
+                        "id": "8fe9e859-08aa-4d06-8304-a31d5d990938",
+                        "alterId": 0
+                    }
+                ]
+            },
+	        "streamSettings": {
+                "network": "mkcp",
+                "kcpSettings": {
+                  "uplinkCapacity": 5,
+                  "downlinkCapacity": 100,
+                  "congestion": true,
+                  "header": {
+                    "type": "none"
+                  }
+                }
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom"
+        }
+    ]
+}
