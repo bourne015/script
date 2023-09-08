@@ -16,8 +16,7 @@
 # Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
 ##
 
-# Default server configuration
-#
+## redirect http to https
 server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
@@ -34,6 +33,7 @@ server {
 	#}
 }
 
+## this port is for test
 server {
 	listen 8200;
 	listen [::]:8200;
@@ -50,6 +50,7 @@ server {
 	}
 }
 
+## https config
 server {
   listen 443 ssl;
   listen [::]:443 ssl;
@@ -85,7 +86,8 @@ server {
   }
 }
 
-
+## support https for backend service
+## backend service runs on 8002, frontend request https on 8001
 server {
   listen 8001 ssl;
   listen [::]:8001 ssl;
