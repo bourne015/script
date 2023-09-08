@@ -26,11 +26,12 @@ server {
 	index index.html index.htm index.nginx-debian.html;
 
 	server_name 52.185.185.68;
+	return 301 https://$host$request_uri;
 
-	location / {
-		root /var/www/mychat/web;
-		try_files $uri $uri/ /index.html =404;
-	}
+	#location / {
+	#	root /var/www/mychat/web;
+	#	try_files $uri $uri/ /index.html =404;
+	#}
 }
 
 server {
@@ -53,8 +54,8 @@ server {
   listen 443 ssl;
   listen [::]:443 ssl;
   
-  ssl_certificate       /etc/letsencrypt/live/www.fantao.live/fullchain.pem;
-  ssl_certificate_key   /etc/letsencrypt/live/www.fantao.live/privkey.pem;
+  ssl_certificate       /etc/letsencrypt/live/www.fantao.life/fullchain.pem;
+  ssl_certificate_key   /etc/letsencrypt/live/www.fantao.life/privkey.pem;
   ssl_session_timeout 1d;
   ssl_session_cache shared:MozSSL:10m;
   ssl_session_tickets off;
@@ -62,10 +63,10 @@ server {
   ssl_protocols         TLSv1.2 TLSv1.3;
   ssl_ciphers           ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
   ssl_prefer_server_ciphers off;
-  
-  server_name           fantao.live;
+
+  server_name           fantao.life;
   location / {
-    	root /var/www/mychat/web;
+	root /var/www/mygallery/web;
 	try_files $uri $uri/ /index.html =404;
   }
   location /ray { # 与 V2Ray 配置中的 path 保持一致
@@ -83,3 +84,35 @@ server {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
   }
 }
+
+
+server {
+  listen 8001 ssl;
+  listen [::]:8001 ssl;
+
+  ssl_certificate       /etc/letsencrypt/live/www.fantao.life/fullchain.pem;
+  ssl_certificate_key   /etc/letsencrypt/live/www.fantao.life/privkey.pem;
+  ssl_session_timeout 1d;
+  ssl_session_cache shared:MozSSL:10m;
+  ssl_session_tickets off;
+
+  ssl_protocols         TLSv1.2 TLSv1.3;
+  ssl_ciphers           ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+  ssl_prefer_server_ciphers off;
+
+  server_name           fantao.life;
+
+ location / {
+    proxy_redirect off;
+    proxy_pass http://52.185.185.68:8002;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
+    # Show real IP in v2ray access.log
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+
+}
+
