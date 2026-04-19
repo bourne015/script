@@ -1,4 +1,12 @@
-# V2ray
+# Xray
+
+### // 安装可执行文件和 .dat 数据文件
+bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+
+
+
+
+# V2ray,(已经废弃)
 
 ## 
 ### service repo:
