@@ -5,10 +5,11 @@ bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release
 
 
 
+## 
+## 
 
 # V2ray,(已经废弃)
 
-## 
 ### service repo:
 https://github.com/v2fly/fhs-install-v2ray
 
